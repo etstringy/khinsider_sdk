@@ -39,4 +39,33 @@ void main() {
       expect(getUrlLeafPath(url), null);
     });
   });
+
+  group('Album Cover URL', () {
+    test('Not an album cover URL returns false', () {
+      final uri = Uri.parse(
+          'https://downloads.khinsider.com/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection');
+
+      final albumId = getUrlLeafPath(uri.toString())!;
+
+      expect(isAlbumCoverUrlFor(uri, albumId), false);
+    });
+
+    test('An album cover URL with correct album ID returns true', () {
+      final uri = Uri.parse(
+          'https://vgmsite.com/soundtracks/minecraft/thumbs/cover.jpg');
+
+      final albumId = 'minecraft';
+
+      expect(isAlbumCoverUrlFor(uri, albumId), true);
+    });
+
+    test('An album cover URL with incorrect album ID returns false', () {
+      final uri = Uri.parse(
+          'https://vgmsite.com/soundtracks/minecraft/thumbs/cover.jpg');
+
+      final albumId = 'other-album';
+
+      expect(isAlbumCoverUrlFor(uri, albumId), false);
+    });
+  });
 }

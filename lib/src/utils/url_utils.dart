@@ -5,6 +5,13 @@ String getAlbumSearchUrl(String query) {
   return BASE_URL_SEARCH + query;
 }
 
+/// Checks if the given [source] URI is the album cover URI for the album with id [albumId].
+bool isAlbumCoverUrlFor(Uri source, String albumId) {
+  final startingUrl = BASE_COVER_URL.replaceAll('{id}', albumId);
+
+  return source.toString().startsWith(startingUrl);
+}
+
 /// Returns the leaf path of the URL if any.
 String? getUrlLeafPath(String url) {
   final parsed = Uri.parse(url);
