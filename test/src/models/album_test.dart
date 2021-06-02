@@ -11,15 +11,23 @@ String _getExampleHtml(Map<String, Object> example) =>
     example[KEY_HTML]! as String;
 
 void _testActualAndExample(Map<String, Object> example, Album actual) {
+  // Assert album ID
   expect(actual.albumId, example[KEY_ID]! as String);
+
+  // Assert album name
   expect(actual.albumName, example[KEY_NAME]! as String);
 
-  final covers = (example[KEY_COVERS]! as List<String>)
-      .map((e) => Uri.parse(e))
-      .toList();
+  // Assert cover images
+  final covers =
+      (example[KEY_COVERS]! as List<String>).map((e) => Uri.parse(e)).toList();
 
   expect(actual.coversUri, covers);
 
+  // Assert available file formats
+  final formats = (example[KEY_FILE_FORMATS]! as List<String>);
+  expect(actual.fileFormats, formats);
+
+  // Assert date added
   final date = example[KEY_DATE_ADDED]! as DateTime;
   expect(actual.dateAdded.year, date.year);
   expect(actual.dateAdded.month, date.month);

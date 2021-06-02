@@ -1,6 +1,7 @@
 const KEY_ID = 'id';
 const KEY_NAME = 'name';
 const KEY_COVERS = 'covers';
+const KEY_FILE_FORMATS = 'formats';
 const KEY_DATE_ADDED = 'date';
 const KEY_SOURCE = 'source';
 const KEY_HTML = 'html';
@@ -11,6 +12,7 @@ final MP3_AND_MP4 = {
   KEY_COVERS: [
     'https://vgmsite.com/soundtracks/ryu-ga-gotoku-7-karaoke-hit-song-collection/thumbs/Cover.jpg'
   ],
+  KEY_FILE_FORMATS: ['mp3', 'm4a'],
   KEY_DATE_ADDED: DateTime(2021, DateTime.may, 26),
   KEY_SOURCE:
       'https://downloads.khinsider.com/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection',

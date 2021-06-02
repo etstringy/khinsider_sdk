@@ -7,12 +7,14 @@ class Album {
   final String albumId;
   final String albumName;
   final List<Uri> coversUri;
+  final List<String> fileFormats;
   final DateTime dateAdded;
 
   Album({
     required this.albumId,
     required this.albumName,
     required this.coversUri,
+    required this.fileFormats,
     required this.dateAdded,
   });
 
@@ -36,6 +38,19 @@ class Album {
       coversUri.add(Uri.parse(img.attributes['src']!));
     });
 
+    // Available file formats are taken from the table header
+    final tableHeaders =
+        document.getElementById(SONGLIST_HEADER_ID)!.getElementsByTagName('th');
+
+    final fileFormats = tableHeaders
+        // Take only the headers that specifies audio format
+        .getRange(SOUND_FORMAT_START_INDEX, tableHeaders.length - 1)
+        // These headers contains a single <b> tag
+        .map((header) => header.getElementsByTagName('b').first)
+        // The file format is the content of the <b> tag
+        .map((bold) => bold.innerHtml.toLowerCase())
+        .toList();
+
     final detailsParagraph = document
         .getElementsByTagName('p')
         .where((element) => element.innerHtml.contains(DATE_ADDED))
@@ -50,6 +65,7 @@ class Album {
       albumId: albumId,
       albumName: albumName,
       coversUri: coversUri,
+      fileFormats: fileFormats,
       dateAdded: dateAdded,
     );
   }
