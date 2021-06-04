@@ -1,5 +1,6 @@
 import 'package:html/parser.dart';
 import 'package:khinsider_api/src/models/album.dart';
+import 'package:khinsider_api/src/models/album_summary.dart';
 import 'package:test/test.dart';
 
 import '../examples/albums.dart';
@@ -11,11 +12,8 @@ String _getExampleHtml(Map<String, Object> example) =>
     example[KEY_HTML]! as String;
 
 void _testActualAndExample(Map<String, Object> example, Album actual) {
-  // Assert album ID
-  expect(actual.albumId, example[KEY_ID]! as String);
-
-  // Assert album name
-  expect(actual.albumName, example[KEY_NAME]! as String);
+  // Assert album summary
+  expect(actual.summary, equals(example[KEY_SUMMARY] as AlbumSummary));
 
   // Assert cover images
   final covers =

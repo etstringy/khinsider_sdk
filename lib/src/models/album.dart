@@ -1,22 +1,25 @@
 import 'package:html/dom.dart';
+import 'package:khinsider_api/src/models/album_summary.dart';
 import 'package:khinsider_api/src/utils/const.dart';
 import 'package:khinsider_api/src/utils/date_utils.dart';
 import 'package:khinsider_api/src/utils/url_utils.dart';
 
 class Album {
-  final String albumId;
-  final String albumName;
+  final AlbumSummary summary;
   final List<Uri> coversUri;
   final List<String> fileFormats;
   final DateTime dateAdded;
 
   Album({
-    required this.albumId,
-    required this.albumName,
+    required this.summary,
     required this.coversUri,
     required this.fileFormats,
     required this.dateAdded,
   });
+
+  String get id => summary.id;
+
+  String get name => summary.name;
 
   factory Album.fromHtmlDoc(Uri source, Document document) {
     // The leaf path of the URL is the album id
@@ -62,8 +65,11 @@ class Album {
     final dateAdded = parseKhinsiderAddedDate(dateAddedString);
 
     return Album(
-      albumId: albumId,
-      albumName: albumName,
+      summary: AlbumSummary(
+        id: albumId,
+        name: albumName,
+        mainCoverImage: coversUri.isEmpty ? null : coversUri.first,
+      ),
       coversUri: coversUri,
       fileFormats: fileFormats,
       dateAdded: dateAdded,
