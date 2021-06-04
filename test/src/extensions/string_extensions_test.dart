@@ -22,6 +22,8 @@ void main() {
     test('Duration with leading 0 in the minutes segment successful', () {
       final expected = Duration(minutes: 2, seconds: 32);
       final actual = "02${DURATION_SEPARATOR}32".asDuration(DURATION_SEPARATOR);
+
+      expect(actual, expected);
     });
 
     test(
