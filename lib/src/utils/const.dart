@@ -13,3 +13,9 @@ const SONGLIST_HEADER_ID = 'songlist_header';
 
 /// The starting index of <th> that specifies the audio format.
 const SOUND_FORMAT_START_INDEX = 3;
+
+/// The HTML class name that contains the soundtrack ID
+const SOUNDTRACK_ID_CLASS = 'clickable-row';
+
+/// The separator used by Khinsider for the song duration.
+const SOUNDTRACK_DURATION_SEPARATOR = ':';
