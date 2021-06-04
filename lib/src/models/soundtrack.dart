@@ -89,7 +89,15 @@ class Soundtrack {
           mapsEqual(formatAndSizes, other.formatAndSizes));
 
   @override
-  int get hashCode => hash4(id, name, duration, formatAndSizes);
+  int get hashCode {
+    // The order of the map entries affect the hash code, but the same content
+    // of the map leads to the same hash code
+    final mapKeyHashCode = hashObjects(formatAndSizes.keys);
+    final mapValueHashCode = hashObjects(formatAndSizes.values);
+    final mapHashCode = hash2(mapKeyHashCode, mapValueHashCode);
+
+    return hashObjects([id, name, duration, mapHashCode]);
+  }
 }
 
 /// Returns the inner HTML of the anchor tag that is contained by the [container].
