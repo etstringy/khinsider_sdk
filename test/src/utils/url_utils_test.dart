@@ -38,6 +38,14 @@ void main() {
 
       expect(getUrlLeafPath(url), null);
     });
+
+    test('Test Khinsider soundtrack path', () {
+      final url =
+          "/game-soundtracks/album/playing-with-nintendo-64-playing-with-power/01%2520Mario%252064%2520-%2520Koopa%2527s%2520Road.mp3";
+
+      expect(getUrlLeafPath(url),
+          '01%2520Mario%252064%2520-%2520Koopa%2527s%2520Road.mp3');
+    });
   });
 
   group('Album Cover URL', () {

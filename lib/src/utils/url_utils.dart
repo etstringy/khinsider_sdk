@@ -16,5 +16,7 @@ bool isAlbumCoverUrlFor(Uri source, String albumId) {
 String? getUrlLeafPath(String url) {
   final parsed = Uri.parse(url);
 
-  return parsed.pathSegments.isEmpty ? null : parsed.pathSegments.last;
+  final pathSegments = parsed.toString().split('/');
+
+  return parsed.pathSegments.isEmpty ? null : pathSegments.last;
 }
