@@ -7,7 +7,7 @@ const KEY_DATE_ADDED = 'date';
 const KEY_SOURCE = 'source';
 const KEY_HTML = 'html';
 
-final MP3_AND_MP4 = {
+final MP3_AND_M4A = {
   KEY_SUMMARY: AlbumSummary(
     id: 'ryu-ga-gotoku-7-karaoke-hit-song-collection',
     name: 'Ryu ga gotoku 7 Karaoke hit song collection',

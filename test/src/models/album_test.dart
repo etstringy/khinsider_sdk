@@ -35,7 +35,7 @@ void _testActualAndExample(Map<String, Object> example, Album actual) {
 void main() {
   group('Album', () {
     test('Album with MP3 and M4A', () {
-      final example = MP3_AND_MP4;
+      final example = MP3_AND_M4A;
       final source = Uri.parse(_getExampleSourceLink(example));
       final document = parse(_getExampleHtml(example));
 
