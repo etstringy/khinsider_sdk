@@ -1,46 +1,29 @@
+import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 import 'package:khinsider_api/src/models/album.dart';
-import 'package:khinsider_api/src/models/album_summary.dart';
 import 'package:test/test.dart';
 
 import '../examples/albums.dart';
 
-String _getExampleSourceLink(Map<String, Object> example) =>
-    example[KEY_SOURCE]! as String;
+Document _getAlbumHtml(Map<String, Album> example) => parse(example.keys.first);
 
-String _getExampleHtml(Map<String, Object> example) =>
-    example[KEY_HTML]! as String;
+Album _getExpectedAlbum(Map<String, Album> example) => example.values.first;
 
-void _testActualAndExample(Map<String, Object> example, Album actual) {
-  // Assert album summary
-  expect(actual.summary, equals(example[KEY_SUMMARY] as AlbumSummary));
+void _testAlbum(Map<String, Album> example, String source) {
+  final actual = Album.fromHtmlDoc(Uri.parse(source), _getAlbumHtml(example));
+  final expected = _getExpectedAlbum(example);
 
-  // Assert cover images
-  final covers =
-      (example[KEY_COVERS]! as List<String>).map((e) => Uri.parse(e)).toList();
-
-  expect(actual.coversUri, covers);
-
-  // Assert available file formats
-  final formats = (example[KEY_FILE_FORMATS]! as List<String>);
-  expect(actual.fileFormats, formats);
-
-  // Assert date added
-  final date = example[KEY_DATE_ADDED]! as DateTime;
-  expect(actual.dateAdded.year, date.year);
-  expect(actual.dateAdded.month, date.month);
-  expect(actual.dateAdded.day, date.day);
+  expect(actual, equals(expected));
 }
 
 void main() {
   group('Album', () {
     test('Album with MP3 and M4A', () {
-      final example = MP3_AND_M4A;
-      final source = Uri.parse(_getExampleSourceLink(example));
-      final document = parse(_getExampleHtml(example));
+      _testAlbum(MP3_AND_M4A_ALBUM, MP3_AND_M4A_ALBUM_SOURCE);
+    });
 
-      final actual = Album.fromHtmlDoc(source, document);
-      _testActualAndExample(example, actual);
+    test('Album with only MP3', () {
+      _testAlbum(MP3_ONLY_ALBUM, MP3_ONLY_ALBUM_SOURCE);
     });
   });
 }

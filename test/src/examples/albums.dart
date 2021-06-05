@@ -1,27 +1,12 @@
+import 'package:khinsider_api/src/models/album.dart';
 import 'package:khinsider_api/src/models/album_summary.dart';
+import 'package:khinsider_api/src/models/soundtrack.dart';
 
-const KEY_SUMMARY = 'summary';
-const KEY_COVERS = 'covers';
-const KEY_FILE_FORMATS = 'formats';
-const KEY_DATE_ADDED = 'date';
-const KEY_SOURCE = 'source';
-const KEY_HTML = 'html';
+/* These HTML examples are taken directly from Khinsider. For ease of testing,
+* the number of soundtracks and related albums of each example are reduced to 2. */
 
-final MP3_AND_M4A = {
-  KEY_SUMMARY: AlbumSummary(
-    id: 'ryu-ga-gotoku-7-karaoke-hit-song-collection',
-    name: 'Ryu ga gotoku 7 Karaoke hit song collection',
-    mainCoverImage: Uri.parse(
-        'https://vgmsite.com/soundtracks/ryu-ga-gotoku-7-karaoke-hit-song-collection/thumbs/Cover.jpg'),
-  ),
-  KEY_COVERS: [
-    'https://vgmsite.com/soundtracks/ryu-ga-gotoku-7-karaoke-hit-song-collection/thumbs/Cover.jpg'
-  ],
-  KEY_FILE_FORMATS: ['mp3', 'm4a'],
-  KEY_DATE_ADDED: DateTime(2021, DateTime.may, 26),
-  KEY_SOURCE:
-      'https://downloads.khinsider.com/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection',
-  KEY_HTML: r'''
+final MP3_AND_M4A_ALBUM = {
+  r'''
 <!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <script language="JavaScript" src="/files/cookies.js"></script>
@@ -429,45 +414,6 @@ final MP3_AND_M4A = {
                 <td class="playlistDownloadSong"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/02.%2520Yume%2520Mita%2520Sugata%2520e%2520%2528Full%2520Spec%2520Edition%2529.mp3"><i class="material-icons">get_app</i></a></td> 
         <!--<td class="playlistAddTo" songid="1088747"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
 	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">3.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/03.%2520Harukaze%2520%2528Full%2520Spec%2520Edition%2529.mp3">Harukaze (Full Spec Edition)</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/03.%2520Harukaze%2520%2528Full%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">4:02</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/03.%2520Harukaze%2520%2528Full%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">7.95 MB</a></td>     
-       			
-			<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/03.%2520Harukaze%2520%2528Full%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">7.86 MB</a></td>
-                <td class="playlistDownloadSong"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/03.%2520Harukaze%2520%2528Full%2520Spec%2520Edition%2529.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="1088748"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">4.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/04.%2520Machinegun%2520Kiss%2520%2528Police%2520Spec%2520Edition%2529.mp3">Machinegun Kiss (Police Spec Edition)</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/04.%2520Machinegun%2520Kiss%2520%2528Police%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">4:30</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/04.%2520Machinegun%2520Kiss%2520%2528Police%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">8.84 MB</a></td>     
-       			
-			<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/04.%2520Machinegun%2520Kiss%2520%2528Police%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">8.67 MB</a></td>
-                <td class="playlistDownloadSong"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/04.%2520Machinegun%2520Kiss%2520%2528Police%2520Spec%2520Edition%2529.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="1088749"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">5.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/05.%2520Akuma%2520no%2520Jigokunabe%2520%2528Mafia%2520Spec%2520Edition%2529.mp3">Akuma no Jigokunabe (Mafia Spec Edition)</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/05.%2520Akuma%2520no%2520Jigokunabe%2520%2528Mafia%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">4:26</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/05.%2520Akuma%2520no%2520Jigokunabe%2520%2528Mafia%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">8.67 MB</a></td>     
-       			
-			<td class="clickable-row" align="right"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/05.%2520Akuma%2520no%2520Jigokunabe%2520%2528Mafia%2520Spec%2520Edition%2529.mp3" style="font-weight:normal;">8.79 MB</a></td>
-                <td class="playlistDownloadSong"><a href="/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection/05.%2520Akuma%2520no%2520Jigokunabe%2520%2528Mafia%2520Spec%2520Edition%2529.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="1088750"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
 	<tr id="songlist_footer">
 	<th colspan="3" align="right" style="border-right: none;"><b>Total:</b></th>
 	<th align="right" style="border-left: none; border-right: none;"><b>21m 8s</b></th>	                                                                                                                                                                                                                                   	
@@ -495,50 +441,7 @@ final MP3_AND_M4A = {
                     <img src="https://vgmsite.com/soundtracks/yakuza-like-a-dragon-kazuma-kiryu-karaoke-hit-song-collection/thumbs/Cover.jpg" border="0">
                                     <br>
                 <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Yakuza Like A Dragon - Kazuma Kiryu Karaoke Hit Song Collection</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/yakuza-6-the-song-of-life-original-soundtrack">
-                    <img src="https://vgmsite.com/soundtracks/yakuza-6-the-song-of-life-original-soundtrack/thumbs/cover.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Yakuza 6 The Song of Life Original Soundtrack</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/yakuza-like-a-dragon-goro-majima-karaoke-hit-song-collection">
-                    <img src="https://vgmsite.com/soundtracks/yakuza-like-a-dragon-goro-majima-karaoke-hit-song-collection/thumbs/Cover.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Yakuza Like A Dragon - Goro Majima Karaoke Hit Song Collection</p></a>
-            </td>
-            </tr><tr>     
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/ryu-ga-gotoku-ryu-ga-gotoku-2-yakuza-yakuza-2-original-sound-track-disc-1-ryu-ga-gotoku">
-                    <img src="https://vgmsite.com/soundtracks/ryu-ga-gotoku-ryu-ga-gotoku-2-yakuza-yakuza-2-original-sound-track-disc-1-ryu-ga-gotoku/thumbs/Cover.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Ryu ga Gotoku & Ryu ga Gotoku 2 (Yakuza & Yakuza 2) Original Sound Track (Disc 1 - Ryu ga Gotoku)</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/ryu-ga-gotoku-4-theme-song-butterfly-city-zeebra">
-                    <img src="https://vgmsite.com/soundtracks/ryu-ga-gotoku-4-theme-song-butterfly-city-zeebra/thumbs/Tray.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Ryu ga Gotoku 4 Theme Song - Butterfly City／Zeebra</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/ryu-ga-gotoku-3-theme-song-loser-eikichi-yazawa">
-                    <img src="https://vgmsite.com/soundtracks/ryu-ga-gotoku-3-theme-song-loser-eikichi-yazawa/thumbs/Tray.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Ryu ga Gotoku 3 Theme Song - Loser／Eikichi Yazawa</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/yakuza-ryu-ga-gotoku-kiwami-2-pc-gamerip">
-                    <p style="font-size: 45px;"><i class="material-icons">music_video</i></p>
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Yakuza (Ryu Ga Gotoku) Kiwami 2 (PC) (gamerip)</p></a>
-            </td>
-                      
+            </td>          
         </tr>
     </table>    
     
@@ -624,9 +527,6 @@ final MP3_AND_M4A = {
 </table>	
 
 	</div>
-
-
-
 		</div>
 
 	</div>
@@ -648,26 +548,55 @@ final MP3_AND_M4A = {
 </script>
 </body>
 </html><!-- Loaded HTML -->
-''',
+''': Album(
+    summary: AlbumSummary(
+      id: 'ryu-ga-gotoku-7-karaoke-hit-song-collection',
+      name: 'Ryu ga gotoku 7 Karaoke hit song collection',
+      mainCoverImage: Uri.parse(
+          'https://vgmsite.com/soundtracks/ryu-ga-gotoku-7-karaoke-hit-song-collection/thumbs/Cover.jpg'),
+    ),
+    coversUri: [
+      Uri.parse(
+          'https://vgmsite.com/soundtracks/ryu-ga-gotoku-7-karaoke-hit-song-collection/thumbs/Cover.jpg')
+    ],
+    fileFormats: ['mp3', 'm4a'],
+    dateAdded: DateTime(2021, DateTime.may, 26),
+    soundtracks: [
+      Soundtrack(
+        id: '01.%2520Akuma%2520no%2520Jigokunabe%2520%2528Full%2520Spec%2520Edition%2529.mp3',
+        name: 'Akuma no Jigokunabe (Full Spec Edition)',
+        duration: Duration(minutes: 4, seconds: 26),
+        formatAndSizes: {'mp3': '8.70 MB', 'm4a': '8.83 MB'},
+      ),
+      Soundtrack(
+        id: '02.%2520Yume%2520Mita%2520Sugata%2520e%2520%2528Full%2520Spec%2520Edition%2529.mp3',
+        name: 'Yume Mita Sugata e (Full Spec Edition)',
+        duration: Duration(minutes: 3, seconds: 44),
+        formatAndSizes: {'mp3': '7.46 MB', 'm4a': '7.15 MB'},
+      ),
+    ],
+    relatedAlbums: [
+      AlbumSummary(
+        id: 'ryu-ga-gotoku-zero-80-s-hits-collection',
+        name: "Ryu ga Gotoku Zero 80's Hits! Collection",
+        mainCoverImage: Uri.parse(
+            'https://vgmsite.com/soundtracks/ryu-ga-gotoku-zero-80-s-hits-collection/thumbs/Cover.jpg'),
+      ),
+      AlbumSummary(
+        id: 'yakuza-like-a-dragon-kazuma-kiryu-karaoke-hit-song-collection',
+        name: 'Yakuza Like A Dragon - Kazuma Kiryu Karaoke Hit Song Collection',
+        mainCoverImage: Uri.parse(
+            'https://vgmsite.com/soundtracks/yakuza-like-a-dragon-kazuma-kiryu-karaoke-hit-song-collection/thumbs/Cover.jpg'),
+      ),
+    ],
+  )
 };
 
-final MP3_ONLY = {
-  KEY_SUMMARY: AlbumSummary(
-    id: 'hellsinker-arrange-remix',
-    name: 'Hellsinker Arrange Remix',
-    mainCoverImage: Uri.parse(
-        'https://vgmsite.com/soundtracks/hellsinker-arrange-remix/thumbs/Cover.jpg'),
-  ),
-  KEY_COVERS: [
-    'https://vgmsite.com/soundtracks/hellsinker-arrange-remix/thumbs/Cover.jpg',
-    'https://vgmsite.com/soundtracks/hellsinker-arrange-remix/thumbs/Disc.jpg',
-  ],
-  KEY_FILE_FORMATS: ['mp3'],
-  KEY_DATE_ADDED: DateTime(2014, DateTime.november, 5),
-  KEY_SOURCE:
-      'https://downloads.khinsider.com/game-soundtracks/album/hellsinker-arrange-remix',
-  KEY_HTML: r'''
+const MP3_AND_M4A_ALBUM_SOURCE =
+    'https://downloads.khinsider.com/game-soundtracks/album/ryu-ga-gotoku-7-karaoke-hit-song-collection';
 
+final MP3_ONLY_ALBUM = {
+  r'''
 <!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <script language="JavaScript" src="/files/cookies.js"></script>
@@ -1076,72 +1005,6 @@ final MP3_ONLY = {
        	        <td class="playlistDownloadSong"><a href="/game-soundtracks/album/hellsinker-arrange-remix/02%2520PRAYer%2520-%2520Segment%252C1%2520Behind%2520-.mp3"><i class="material-icons">get_app</i></a></td> 
         <!--<td class="playlistAddTo" songid="226067"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
 	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">3.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/hellsinker-arrange-remix/03%2520Executor%2520-%2520Segment%252C1-2%2520BOSS%2520-.mp3">Executor - Segment,1-2 BOSS -</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/03%2520Executor%2520-%2520Segment%252C1-2%2520BOSS%2520-.mp3" style="font-weight:normal;">5:29</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/03%2520Executor%2520-%2520Segment%252C1-2%2520BOSS%2520-.mp3" style="font-weight:normal;">10.55 MB</a></td>     
-       	        <td class="playlistDownloadSong"><a href="/game-soundtracks/album/hellsinker-arrange-remix/03%2520Executor%2520-%2520Segment%252C1-2%2520BOSS%2520-.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="226068"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">4.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/hellsinker-arrange-remix/04%2520Stranger%2520-%2520Segment%252C2%2520Behind%2520-.mp3">Stranger - Segment,2 Behind -</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/04%2520Stranger%2520-%2520Segment%252C2%2520Behind%2520-.mp3" style="font-weight:normal;">5:46</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/04%2520Stranger%2520-%2520Segment%252C2%2520Behind%2520-.mp3" style="font-weight:normal;">10.93 MB</a></td>     
-       	        <td class="playlistDownloadSong"><a href="/game-soundtracks/album/hellsinker-arrange-remix/04%2520Stranger%2520-%2520Segment%252C2%2520Behind%2520-.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="226069"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">5.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/hellsinker-arrange-remix/05%2520EDEN%2520-%2520Segment%252C3%2520Lead%2520-.mp3">EDEN - Segment,3 Lead -</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/05%2520EDEN%2520-%2520Segment%252C3%2520Lead%2520-.mp3" style="font-weight:normal;">6:42</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/05%2520EDEN%2520-%2520Segment%252C3%2520Lead%2520-.mp3" style="font-weight:normal;">12.68 MB</a></td>     
-       	        <td class="playlistDownloadSong"><a href="/game-soundtracks/album/hellsinker-arrange-remix/05%2520EDEN%2520-%2520Segment%252C3%2520Lead%2520-.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="226070"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">6.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/hellsinker-arrange-remix/06%2520Sacred%2520gate%2520-%2520Segment%252C4%2520-.mp3">Sacred gate - Segment,4 -</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/06%2520Sacred%2520gate%2520-%2520Segment%252C4%2520-.mp3" style="font-weight:normal;">6:41</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/06%2520Sacred%2520gate%2520-%2520Segment%252C4%2520-.mp3" style="font-weight:normal;">12.74 MB</a></td>     
-       	        <td class="playlistDownloadSong"><a href="/game-soundtracks/album/hellsinker-arrange-remix/06%2520Sacred%2520gate%2520-%2520Segment%252C4%2520-.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="226071"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">7.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/hellsinker-arrange-remix/07%2520%25E5%25A4%25AA%25E9%2599%25BD%25E3%2582%2592%25E8%25BF%25BD%25E3%2581%2586%25E3%2583%25A2%25E3%2583%258E%2520-%2520Segment%252C5%2520SOL%2520-.mp3">太陽を追うモノ - Segment,5 SOL -</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/07%2520%25E5%25A4%25AA%25E9%2599%25BD%25E3%2582%2592%25E8%25BF%25BD%25E3%2581%2586%25E3%2583%25A2%25E3%2583%258E%2520-%2520Segment%252C5%2520SOL%2520-.mp3" style="font-weight:normal;">3:15</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/07%2520%25E5%25A4%25AA%25E9%2599%25BD%25E3%2582%2592%25E8%25BF%25BD%25E3%2581%2586%25E3%2583%25A2%25E3%2583%258E%2520-%2520Segment%252C5%2520SOL%2520-.mp3" style="font-weight:normal;">6.66 MB</a></td>     
-       	        <td class="playlistDownloadSong"><a href="/game-soundtracks/album/hellsinker-arrange-remix/07%2520%25E5%25A4%25AA%25E9%2599%25BD%25E3%2582%2592%25E8%25BF%25BD%25E3%2581%2586%25E3%2583%25A2%25E3%2583%258E%2520-%2520Segment%252C5%2520SOL%2520-.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="226072"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
-	<tr>    	
-		<td align="center" title="play track"><div class="playTrack"><div class="arrow-play">&nbsp;</div></div></td>
-		                                                                                                            
-			<td align="right" style="padding-right: 8px;">8.</td>   
-		                                                                      
-	 	<td class="clickable-row"><a href="/game-soundtracks/album/hellsinker-arrange-remix/08%2520Shrine%2520of%2520Farewell%2520-Synthesize-%2520-%2520%25E6%25B1%25BA%25E5%2588%25A5%25E3%2581%25AE%25E9%259C%258A%25E5%25BB%259F%2520-.mp3">Shrine of Farewell -Synthesize- - &#8203;決別の霊廟 -</a></td>
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/08%2520Shrine%2520of%2520Farewell%2520-Synthesize-%2520-%2520%25E6%25B1%25BA%25E5%2588%25A5%25E3%2581%25AE%25E9%259C%258A%25E5%25BB%259F%2520-.mp3" style="font-weight:normal;">5:55</a></td> 
-   		<td class="clickable-row" align="right"><a href="/game-soundtracks/album/hellsinker-arrange-remix/08%2520Shrine%2520of%2520Farewell%2520-Synthesize-%2520-%2520%25E6%25B1%25BA%25E5%2588%25A5%25E3%2581%25AE%25E9%259C%258A%25E5%25BB%259F%2520-.mp3" style="font-weight:normal;">11.08 MB</a></td>     
-       	        <td class="playlistDownloadSong"><a href="/game-soundtracks/album/hellsinker-arrange-remix/08%2520Shrine%2520of%2520Farewell%2520-Synthesize-%2520-%2520%25E6%25B1%25BA%25E5%2588%25A5%25E3%2581%25AE%25E9%259C%258A%25E5%25BB%259F%2520-.mp3"><i class="material-icons">get_app</i></a></td> 
-        <!--<td class="playlistAddTo" songid="226073"><i class="material-icons">playlist_add</i><div>Add to </div></td>-->
-	</tr>
 	<tr id="songlist_footer">
 	<th colspan="3" align="right" style="border-right: none;"><b>Total:</b></th>
 	<th align="right" style="border-left: none; border-right: none;"><b>46m 37s</b></th>                                                                                                                         	
@@ -1168,50 +1031,7 @@ final MP3_ONLY = {
                     <img src="https://vgmsite.com/soundtracks/hellsinker-ost/thumbs/albumart.png" border="0">
                                     <br>
                 <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Hellsinker OST</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/cotton-original-soundtrack">
-                    <img src="https://vgmsite.com/soundtracks/cotton-original-soundtrack/thumbs/000 Front.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Cotton Original Soundtrack</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/shin-megami-tensei-iii-nocturne-maniacs-soundtrack-extra-ver">
-                    <p style="font-size: 45px;"><i class="material-icons">music_video</i></p>
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Shin Megami Tensei III Nocturne Maniacs Soundtrack extra version (2004)</p></a>
-            </td>
-            </tr><tr>     
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/helltaker-2020-pc-gamerip">
-                    <p style="font-size: 45px;"><i class="material-icons">music_video</i></p>
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Helltaker (2020) (PC) (gamerip)</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/dariusburst-remix-wonder-world">
-                    <img src="https://vgmsite.com/soundtracks/dariusburst-remix-wonder-world/thumbs/Image012.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Dariusburst Remix Wonder World</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/langrisser-descendents-of-brilliant-light">
-                    <img src="https://vgmsite.com/soundtracks/langrisser-descendents-of-brilliant-light/thumbs/langrisser-180.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Langrisser - Descendents of Brilliant Light</p></a>
-            </td>
-                 
-            <td style="padding: 3px; width:130px;" valign="top" align="center">
-                <a href="/game-soundtracks/album/perfect-dark-64">
-                    <img src="https://vgmsite.com/soundtracks/perfect-dark-64/thumbs/pddisc2.jpg" border="0">
-                                    <br>
-                <p style="margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom:0px; padding: 0;">Perfect Dark 64</p></a>
-            </td>
-                      
+            </td>       
         </tr>
     </table>    
     
@@ -1321,5 +1141,46 @@ final MP3_ONLY = {
 </script>
 </body>
 </html><!-- Loaded HTML -->
-  ''',
+  ''': Album(
+    summary: AlbumSummary(
+      id: 'hellsinker-arrange-remix',
+      name: 'Hellsinker Arrange Remix',
+      mainCoverImage: Uri.parse(
+          'https://vgmsite.com/soundtracks/hellsinker-arrange-remix/thumbs/Cover.jpg'),
+    ),
+    coversUri: [
+      Uri.parse(
+          'https://vgmsite.com/soundtracks/hellsinker-arrange-remix/thumbs/Cover.jpg'),
+      Uri.parse(
+          'https://vgmsite.com/soundtracks/hellsinker-arrange-remix/thumbs/Disc.jpg'),
+    ],
+    fileFormats: ['mp3'],
+    dateAdded: DateTime(2014, DateTime.november, 5),
+    soundtracks: [
+      Soundtrack(
+        id: '01%2520BackGround%2520-%2520Title%2520ver%252C2%2520-.mp3',
+        name: 'BackGround - Title ver,2 -',
+        duration: Duration(minutes: 6, seconds: 23),
+        formatAndSizes: {'mp3': '12.06 MB'},
+      ),
+      Soundtrack(
+          id: '02%2520PRAYer%2520-%2520Segment%252C1%2520Behind%2520-.mp3',
+          name: 'PRAYer - Segment,1 Behind -',
+          duration: Duration(minutes: 6, seconds: 28),
+          formatAndSizes: {'mp3': '12.15 MB'})
+    ],
+    relatedAlbums: [
+      AlbumSummary(
+          id: 'hellsinker-original-soundtrack', name: 'Hellsinker (gamerip)'),
+      AlbumSummary(
+        id: 'hellsinker-ost',
+        name: 'Hellsinker OST',
+        mainCoverImage: Uri.parse(
+            'https://vgmsite.com/soundtracks/hellsinker-ost/thumbs/albumart.png'),
+      ),
+    ],
+  )
 };
+
+const MP3_ONLY_ALBUM_SOURCE =
+    'https://downloads.khinsider.com/game-soundtracks/album/hellsinker-arrange-remix';

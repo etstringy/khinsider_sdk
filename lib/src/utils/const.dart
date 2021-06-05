@@ -19,3 +19,6 @@ const SOUNDTRACK_ID_CLASS = 'clickable-row';
 
 /// The separator used by Khinsider for the song duration.
 const SOUNDTRACK_DURATION_SEPARATOR = ':';
+
+/// The <table> id for the soundtrack table.
+const SOUNDTRACK_TABLE_ID = 'songlist';
