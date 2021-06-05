@@ -11,6 +11,16 @@ void main() {
     });
   });
 
+  group('Album URL', () {
+    test('Get album URL using id', () {
+      final id = 'wrecking-crew-98';
+      final expected =
+          'https://downloads.khinsider.com/game-soundtracks/album/$id';
+
+      expect(getAlbumUrl(id), expected);
+    });
+  });
+
   group('URL Leaf Path', () {
     test('Get leaf path without branch', () {
       final url = 'http://www.google.com';

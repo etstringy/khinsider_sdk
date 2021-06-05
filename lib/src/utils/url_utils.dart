@@ -1,9 +1,10 @@
 import 'package:khinsider_api/src/utils/const.dart';
 
 /// Returns the **unparsed** URL for listing albums using the given [query] string.
-String getAlbumSearchUrl(String query) {
-  return BASE_URL_SEARCH + query;
-}
+String getAlbumSearchUrl(String query) => BASE_URL_SEARCH + query;
+
+/// Returns the **unparsed** URL for the album with id [albumId].
+String getAlbumUrl(String albumId) => BASE_ALBUM_URL + albumId;
 
 /// Checks if the given [source] URI is the album cover URI for the album with id [albumId].
 bool isAlbumCoverUrlFor(Uri source, String albumId) {

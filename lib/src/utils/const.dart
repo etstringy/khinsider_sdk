@@ -1,6 +1,10 @@
 /// The base URL for querying list of albums.
 const BASE_URL_SEARCH = 'https://downloads.khinsider.com/search?search=';
 
+/// The base URL for an album.
+const BASE_ALBUM_URL =
+    'https://downloads.khinsider.com/game-soundtracks/album/';
+
 /// The base URL for album cover images.
 const BASE_COVER_URL = 'https://vgmsite.com/soundtracks/{id}/thumbs/';
 
