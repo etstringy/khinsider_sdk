@@ -7,7 +7,7 @@ void main() {
       final query = 'test';
       final expected = 'https://downloads.khinsider.com/search?search=$query';
 
-      expect(getAlbumSearchUrl(query), expected);
+      expect(getAlbumSearchUnparsedUrl(query), expected);
     });
   });
 
@@ -17,7 +17,7 @@ void main() {
       final expected =
           'https://downloads.khinsider.com/game-soundtracks/album/$id';
 
-      expect(getAlbumUrl(id), expected);
+      expect(getAlbumUnparsedUrl(id), expected);
     });
   });
 

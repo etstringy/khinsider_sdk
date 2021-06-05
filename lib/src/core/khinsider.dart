@@ -25,7 +25,7 @@ class Khinsider {
     }
 
     // Query Khinsider
-    final url = Uri.parse(getAlbumSearchUrl(query));
+    final url = Uri.parse(getAlbumSearchUnparsedUrl(query));
     final response = await client.read(url);
 
     // Find the relevant anchor tags
