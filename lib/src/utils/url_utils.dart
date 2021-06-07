@@ -25,9 +25,13 @@ bool isSoundFileUrlFor(Uri source, String albumId, String soundId) {
 
   final segments = source.toString().split('/');
 
+  // Remove the ".mp3" suffix from the id
+  final pureSoundId = soundId.substring(0, soundId.length - 4);
+  final encodedSoundId = Uri.parse(pureSoundId).pathSegments.last;
+
   return source.toString().startsWith(front) &&
       source.pathSegments.isNotEmpty &&
-      segments.last.contains(soundId);
+      segments.last.contains(encodedSoundId);
 }
 
 /// Returns the leaf path of the URL if any.
