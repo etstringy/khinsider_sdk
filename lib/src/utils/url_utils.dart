@@ -6,6 +6,11 @@ String getAlbumSearchUnparsedUrl(String query) => BASE_URL_SEARCH + query;
 /// Returns the **unparsed** URL for the album with id [albumId].
 String getAlbumUnparsedUrl(String albumId) => BASE_ALBUM_URL + albumId;
 
+/// Returns the **unparsed** URL for the soundtrack with id [soundId] from
+/// the album with id [albumId].
+String getSoundtrackUnparsedUrl(String albumId, String soundId) =>
+    getAlbumUnparsedUrl(albumId) + '/' + soundId;
+
 /// Checks if the given [source] URI is the album cover URI for the album with id [albumId].
 bool isAlbumCoverUrlFor(Uri source, String albumId) {
   final startingUrl = BASE_COVER_URL.replaceAll('{id}', albumId);

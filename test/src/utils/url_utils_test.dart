@@ -21,6 +21,18 @@ void main() {
     });
   });
 
+  group('Soundtrack URL', () {
+    test('Get soundtrack URL', () {
+      final albumId = 'megaman-zero-1-ost-remastered';
+      final soundId = '06%20Theme%20of%20ZERO%20%28from%20Rockman%20X%29.mp3';
+
+      final expected =
+          'https://downloads.khinsider.com/game-soundtracks/album/$albumId/$soundId';
+
+      expect(getSoundtrackUnparsedUrl(albumId, soundId), expected);
+    });
+  });
+
   group('URL Leaf Path', () {
     test('Get leaf path without branch', () {
       final url = 'http://www.google.com';
