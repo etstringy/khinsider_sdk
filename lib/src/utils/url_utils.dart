@@ -13,6 +13,18 @@ bool isAlbumCoverUrlFor(Uri source, String albumId) {
   return source.toString().startsWith(startingUrl);
 }
 
+/// Checks if [source] URI is the sound file from an album with the id [albumId]
+/// and the soundtrack id [soundId].
+bool isSoundFileUrlFor(Uri source, String albumId, String soundId) {
+  final front = BASE_SOUND_FILE_URL + albumId;
+
+  final segments = source.toString().split('/');
+
+  return source.toString().startsWith(front) &&
+      source.pathSegments.isNotEmpty &&
+      segments.last.contains(soundId);
+}
+
 /// Returns the leaf path of the URL if any.
 String? getUrlLeafPath(String url) {
   final parsed = Uri.parse(url);

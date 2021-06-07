@@ -86,4 +86,30 @@ void main() {
       expect(isAlbumCoverUrlFor(uri, albumId), false);
     });
   });
+
+  group('Sound File URL', () {
+    final albumId = 'megaman-zero-1-ost-remastered';
+    final soundId = '06%20Theme%20of%20ZERO%20%28from%20Rockman%20X%29.mp3';
+
+    final uri = Uri.parse(
+        'https://vgmsite.com/soundtracks/$albumId/zhlfubvcjs/$soundId');
+
+    test('Not a sound file URL returns false', () {
+      final notSoundFileUri = Uri.parse('http://www.google.com');
+
+      expect(isSoundFileUrlFor(notSoundFileUri, albumId, soundId), false);
+    });
+
+    test('A sound file URL with wrong album id returns false', () {
+      expect(isSoundFileUrlFor(uri, 'other-album', soundId), false);
+    });
+
+    test('A sound file URL with wrong sound id returns false', () {
+      expect(isSoundFileUrlFor(uri, albumId, 'other-sound'), false);
+    });
+
+    test('A sound file URL with correct id returns true', () {
+      expect(isSoundFileUrlFor(uri, albumId, soundId), true);
+    });
+  });
 }
