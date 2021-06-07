@@ -1,8 +1,10 @@
 import 'package:html/parser.dart';
 import 'package:http/http.dart';
 import 'package:khinsider_api/src/extensions/html_extensions.dart';
+import 'package:khinsider_api/src/models/album.dart';
 import 'package:khinsider_api/src/utils/const.dart';
 import 'package:khinsider_api/src/utils/url_utils.dart';
+import 'package:quiver/strings.dart';
 
 class Khinsider {
   late final Client client;
@@ -51,5 +53,27 @@ class Khinsider {
     });
 
     return result;
+  }
+
+  /// Retrieves an album details for the given [albumId] from Khinsider website.
+  /// If [albumId] is blank or such id does not exist, an [ArgumentError] will be thrown.
+  Future<Album> getAlbum(String albumId) async {
+    if (isBlank(albumId)) {
+      throw ArgumentError('Album id cannot be empty!');
+    }
+
+    // Call Khinsider
+    final url = Uri.parse(getAlbumUnparsedUrl(albumId));
+    final response = await client.read(url);
+
+    // Parse String into HTML Document
+    final parsedDocument = parse(response);
+
+    // Build Album using the factory function
+    try {
+      return Album.fromHtmlDoc(url, parsedDocument);
+    } catch (err) {
+      throw ArgumentError('The album ID "$albumId" does not exist!');
+    }
   }
 }

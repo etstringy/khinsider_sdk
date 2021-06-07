@@ -4,6 +4,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
+import '../examples/albums.dart';
 import '../examples/search_album.dart';
 import 'khinsider_test.mocks.dart';
 
@@ -32,8 +33,7 @@ void main() {
     });
 
     test('Search album with no result returns an empty map', () async {
-      when(mock.read(any))
-          .thenAnswer((realInvocation) async => searchAlbumEmptyExample);
+      when(mock.read(any)).thenAnswer((_) async => searchAlbumEmptyExample);
 
       final result = await khinsider.searchAlbums('Test');
 
@@ -45,6 +45,32 @@ void main() {
           .thenAnswer((_) => Future.error(ClientException('Mock error')));
 
       expect(() => khinsider.searchAlbums('Test'), throwsException);
+    });
+
+    test('Get album throws argument error when id does not exist', () {
+      when(mock.read(any)).thenAnswer((_) async => ALBUM_NOT_FOUND_EXAMPLE);
+
+      expect(() => khinsider.getAlbum('non-existing'), throwsArgumentError);
+    });
+
+    test('Get album throws argument error when id is blank', () {
+      expect(() => khinsider.getAlbum(' '), throwsArgumentError);
+    });
+
+    test('Get album throws argument error when id is empty', () {
+      expect(() => khinsider.getAlbum(''), throwsArgumentError);
+    });
+
+    test('Get album with existing album id', () async {
+      final example = MP3_AND_M4A_ALBUM;
+      final mockHtml = example.keys.first;
+      final expected = example.values.first;
+
+      when(mock.read(any)).thenAnswer((_) async => mockHtml);
+
+      final actual = await khinsider.getAlbum(expected.id);
+
+      expect(actual, equals(expected));
     });
   });
 }

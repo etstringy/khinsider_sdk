@@ -1,18 +1,26 @@
 import 'package:khinsider_api/src/core/khinsider.dart';
 
-void main() {
+void main() async {
   final stopwatch = Stopwatch();
 
   final khinsider = Khinsider();
 
   /* Search */
-  khinsider.searchAlbums('Hello').then((value) {
-    value.forEach((key, value) {
-      print('$key: $value');
-    });
+  final albumsList = await khinsider.searchAlbums('Hello');
+
+  albumsList.forEach((key, value) {
+    print('$key: $value');
   });
 
   /* Album */
+  final album = await khinsider.getAlbum('angel');
+
+  final songs = album.soundtracks;
+
+  songs.forEach((element) {
+    print(element.name + " : " + element.id);
+  });
+
   // const base = "https://downloads.khinsider.com/game-soundtracks/album/";
   // const albumId = 'pokemon-black-and-white-2-super-music-collection';
   // final url = Uri.parse("$base$albumId");
