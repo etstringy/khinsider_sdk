@@ -8,6 +8,9 @@ const BASE_ALBUM_URL =
 /// The base URL for album cover images.
 const BASE_COVER_URL = 'https://vgmsite.com/soundtracks/{id}/thumbs/';
 
+/// The base URL for a soundtrack sound file.
+const BASE_SOUND_FILE_URL = 'https://vgmsite.com/soundtracks/';
+
 const ALBUMS_ANCHOR_HREF_START = '/game-soundtracks/album';
 
 const DATE_ADDED = 'Date added:';

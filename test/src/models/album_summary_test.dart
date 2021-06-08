@@ -1,6 +1,6 @@
 import 'package:html/dom.dart';
 import 'package:html/parser.dart';
-import 'package:khinsider_api/src/models/album_summary.dart';
+import 'package:khinsider_sdk/src/models/album_summary.dart';
 import 'package:test/test.dart';
 
 import '../examples/album_summaries.dart';

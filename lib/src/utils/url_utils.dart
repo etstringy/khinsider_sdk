@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/utils/const.dart';
+import 'package:khinsider_sdk/src/utils/const.dart';
 
 /// Returns the **unparsed** URL for listing albums using the given [query] string.
 String getAlbumSearchUnparsedUrl(String query) => BASE_URL_SEARCH + query;
@@ -6,11 +6,32 @@ String getAlbumSearchUnparsedUrl(String query) => BASE_URL_SEARCH + query;
 /// Returns the **unparsed** URL for the album with id [albumId].
 String getAlbumUnparsedUrl(String albumId) => BASE_ALBUM_URL + albumId;
 
+/// Returns the **unparsed** URL for the soundtrack with id [soundId] from
+/// the album with id [albumId].
+String getSoundtrackUnparsedUrl(String albumId, String soundId) =>
+    getAlbumUnparsedUrl(albumId) + '/' + soundId;
+
 /// Checks if the given [source] URI is the album cover URI for the album with id [albumId].
 bool isAlbumCoverUrlFor(Uri source, String albumId) {
   final startingUrl = BASE_COVER_URL.replaceAll('{id}', albumId);
 
   return source.toString().startsWith(startingUrl);
+}
+
+/// Checks if [source] URI is the sound file from an album with the id [albumId]
+/// and the soundtrack id [soundId].
+bool isSoundFileUrlFor(Uri source, String albumId, String soundId) {
+  final front = BASE_SOUND_FILE_URL + albumId;
+
+  final segments = source.toString().split('/');
+
+  // Remove the ".mp3" suffix from the id
+  final pureSoundId = soundId.substring(0, soundId.length - 4);
+  final encodedSoundId = Uri.parse(pureSoundId).pathSegments.last;
+
+  return source.toString().startsWith(front) &&
+      source.pathSegments.isNotEmpty &&
+      segments.last.contains(encodedSoundId);
 }
 
 /// Returns the leaf path of the URL if any.

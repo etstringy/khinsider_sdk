@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/extensions/string_extensions.dart';
+import 'package:khinsider_sdk/src/extensions/string_extensions.dart';
 import 'package:test/test.dart';
 
 const DURATION_SEPARATOR = ':';

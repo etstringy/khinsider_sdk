@@ -1,5 +1,5 @@
 import 'package:html/dom.dart';
-import 'package:khinsider_api/src/utils/url_utils.dart';
+import 'package:khinsider_sdk/src/utils/url_utils.dart';
 import 'package:quiver/core.dart';
 
 /// A data class for the summary details of an album.

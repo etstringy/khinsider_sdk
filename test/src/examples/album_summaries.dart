@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/models/album_summary.dart';
+import 'package:khinsider_sdk/src/models/album_summary.dart';
 
 String _buildAlbumSummaryHtml(String td) => '''
 <html>

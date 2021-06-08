@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/models/soundtrack.dart';
+import 'package:khinsider_sdk/src/models/soundtrack.dart';
 
 /// Wrap the [bodyContent] inside a <body> tag inside an <html> tag.
 String _wrapAsHtml(String bodyContent) => '''

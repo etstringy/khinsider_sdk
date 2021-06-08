@@ -1,18 +1,19 @@
-import 'package:khinsider_api/src/core/khinsider.dart';
+import 'package:khinsider_sdk/src/core/khinsider.dart';
 
 void main() async {
-  final stopwatch = Stopwatch();
-
+  // Create the client object
   final khinsider = Khinsider();
 
-  /* Search */
+  // Query for a list of albums
+  print('/* Search */');
   final albumsList = await khinsider.searchAlbums('Hello');
 
   albumsList.forEach((key, value) {
     print('$key: $value');
   });
 
-  /* Album */
+  // Query a specific album to get its soundtracks and related albums
+  print('/* Album */');
   final album = await khinsider.getAlbum('angel');
 
   final songs = album.soundtracks;
@@ -21,45 +22,14 @@ void main() async {
     print(element.name + " : " + element.id);
   });
 
-  // const base = "https://downloads.khinsider.com/game-soundtracks/album/";
-  // const albumId = 'pokemon-black-and-white-2-super-music-collection';
-  // final url = Uri.parse("$base$albumId");
-  //
-  // stopwatch.start();
-  //
-  // client.get(url).then((value) {
-  //   final soundtrackIds = parse(value.body)
-  //       .getElementsByTagName('a')
-  //       .where((anchor) => anchor.attributes['href']?.endsWith('.mp3') ?? false)
-  //       .map((e) {
-  //     final lastPart = e.attributes['href']!.split('/').last;
-  //     return lastPart;
-  //   }).toSet();
-  //
-  //   final soundFiles = soundtrackIds.map((soundId) async {
-  //     final soundFilesUrl = Uri.parse('$base$albumId/$soundId');
-  //
-  //     // print('Retrieving sound $soundId from ${soundFilesUrl.toString()}');
-  //
-  //     final response = await client.get(soundFilesUrl);
-  //
-  //     final anchors = parse(response.body).getElementsByTagName('a');
-  //
-  //     final mp3Anchor = anchors
-  //         .where(
-  //             (anchor) => anchor.attributes['href']?.endsWith('.mp3') ?? false)
-  //         .first;
-  //
-  //     return mp3Anchor.attributes['href']!;
-  //   });
-  //
-  //   Future.wait(soundFiles).then((value) {
-  //     print(
-  //         'Taken ${stopwatch.elapsedMilliseconds / 1000} seconds for ${value.length} files');
-  //
-  //     client.close();
-  //   }).catchError((err) {
-  //     print(err);
-  //   });
-  // });
+  // Query a specific soundtrack to get the download link(s)
+  print('/* Get sound file links */');
+  final soundFiles = await khinsider.getSoundFiles(
+    'best-of-amok-retro-c64-and-amiga-remixes',
+    '09%2520-%2520Ice%2520Age%2520%2528Jeroen%2520Tel%2529.mp3',
+  );
+
+  soundFiles.forEach((format, link) {
+    print('Sound for $format can be found on $link');
+  });
 }

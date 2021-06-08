@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/utils/url_utils.dart';
+import 'package:khinsider_sdk/src/utils/url_utils.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -18,6 +18,18 @@ void main() {
           'https://downloads.khinsider.com/game-soundtracks/album/$id';
 
       expect(getAlbumUnparsedUrl(id), expected);
+    });
+  });
+
+  group('Soundtrack URL', () {
+    test('Get soundtrack URL', () {
+      final albumId = 'megaman-zero-1-ost-remastered';
+      final soundId = '06%20Theme%20of%20ZERO%20%28from%20Rockman%20X%29.mp3';
+
+      final expected =
+          'https://downloads.khinsider.com/game-soundtracks/album/$albumId/$soundId';
+
+      expect(getSoundtrackUnparsedUrl(albumId, soundId), expected);
     });
   });
 
@@ -84,6 +96,39 @@ void main() {
       final albumId = 'other-album';
 
       expect(isAlbumCoverUrlFor(uri, albumId), false);
+    });
+  });
+
+  group('Sound File URL', () {
+    final albumId = 'angel';
+    final soundId = '09%2520-%2520mate.mp3';
+
+    final uri = Uri.parse(
+        'https://vgmsite.com/soundtracks/angel/jkmuretl/09%20-%20mate.mp3');
+
+    final uriOtherFormat = Uri.parse(
+        'https://vgmsite.com/soundtracks/angel/jkmuretl/09%20-%20mate.flac');
+
+    test('Not a sound file URL returns false', () {
+      final notSoundFileUri = Uri.parse('http://www.google.com');
+
+      expect(isSoundFileUrlFor(notSoundFileUri, albumId, soundId), isFalse);
+    });
+
+    test('A sound file URL with wrong album id returns false', () {
+      expect(isSoundFileUrlFor(uri, 'other-album', soundId), isFalse);
+    });
+
+    test('A sound file URL with wrong sound id returns false', () {
+      expect(isSoundFileUrlFor(uri, albumId, 'other-sound'), isFalse);
+    });
+
+    test('A sound file URL with correct id returns true', () {
+      expect(isSoundFileUrlFor(uri, albumId, soundId), isTrue);
+    });
+
+    test('A sound file URL with correct id but not mp3 returns true', () {
+      expect(isSoundFileUrlFor(uriOtherFormat, albumId, soundId), isTrue);
     });
   });
 }
