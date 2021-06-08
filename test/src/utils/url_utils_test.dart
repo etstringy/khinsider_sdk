@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/utils/url_utils.dart';
+import 'package:khinsider_sdk/src/utils/url_utils.dart';
 import 'package:test/test.dart';
 
 void main() {

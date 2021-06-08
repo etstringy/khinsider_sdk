@@ -1,7 +1,7 @@
 import 'package:html/dom.dart';
-import 'package:khinsider_api/src/extensions/string_extensions.dart';
-import 'package:khinsider_api/src/utils/const.dart';
-import 'package:khinsider_api/src/utils/url_utils.dart';
+import 'package:khinsider_sdk/src/extensions/string_extensions.dart';
+import 'package:khinsider_sdk/src/utils/const.dart';
+import 'package:khinsider_sdk/src/utils/url_utils.dart';
 import 'package:quiver/collection.dart';
 import 'package:quiver/core.dart';
 

@@ -1,6 +1,6 @@
-import 'package:khinsider_api/src/models/album.dart';
-import 'package:khinsider_api/src/models/album_summary.dart';
-import 'package:khinsider_api/src/models/soundtrack.dart';
+import 'package:khinsider_sdk/src/models/album.dart';
+import 'package:khinsider_sdk/src/models/album_summary.dart';
+import 'package:khinsider_sdk/src/models/soundtrack.dart';
 
 /* These HTML examples are taken directly from Khinsider. For ease of testing,
 * the number of soundtracks and related albums of each example are reduced to 2. */

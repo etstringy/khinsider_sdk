@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/utils/date_utils.dart';
+import 'package:khinsider_sdk/src/utils/date_utils.dart';
 import 'package:test/test.dart';
 
 String _getKhinsiderAddedDate(String ordinalDate, String month, String year) =>

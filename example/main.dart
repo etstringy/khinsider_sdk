@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/core/khinsider.dart';
+import 'package:khinsider_sdk/src/core/khinsider.dart';
 
 void main() async {
   // Create the client object

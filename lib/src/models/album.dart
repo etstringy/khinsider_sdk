@@ -1,9 +1,9 @@
 import 'package:html/dom.dart';
-import 'package:khinsider_api/src/models/album_summary.dart';
-import 'package:khinsider_api/src/models/soundtrack.dart';
-import 'package:khinsider_api/src/utils/const.dart';
-import 'package:khinsider_api/src/utils/date_utils.dart';
-import 'package:khinsider_api/src/utils/url_utils.dart';
+import 'package:khinsider_sdk/src/models/album_summary.dart';
+import 'package:khinsider_sdk/src/models/soundtrack.dart';
+import 'package:khinsider_sdk/src/utils/const.dart';
+import 'package:khinsider_sdk/src/utils/date_utils.dart';
+import 'package:khinsider_sdk/src/utils/url_utils.dart';
 import 'package:quiver/collection.dart';
 import 'package:quiver/core.dart';
 

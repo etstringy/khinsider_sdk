@@ -1,6 +1,6 @@
 import 'package:html/dom.dart';
 import 'package:html/parser.dart';
-import 'package:khinsider_api/src/models/soundtrack.dart';
+import 'package:khinsider_sdk/src/models/soundtrack.dart';
 import 'package:test/test.dart';
 
 import '../examples/soundtracks.dart';

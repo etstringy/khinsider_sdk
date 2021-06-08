@@ -1,7 +1,7 @@
-name: khinsider_api
-description: API for video game musics from downloads.khinsider.com
+name: khinsider_sdk
+description: SDK for video game musics from downloads.khinsider.com
 version: 0.0.1
-homepage: https://github.com/SebastianLiando/khinsider_api
+homepage: https://github.com/SebastianLiando/khinsider_sdk
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

@@ -1,4 +1,4 @@
-import 'package:khinsider_api/src/utils/const.dart';
+import 'package:khinsider_sdk/src/utils/const.dart';
 
 /// Returns the **unparsed** URL for listing albums using the given [query] string.
 String getAlbumSearchUnparsedUrl(String query) => BASE_URL_SEARCH + query;

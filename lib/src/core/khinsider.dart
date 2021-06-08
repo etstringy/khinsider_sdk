@@ -1,10 +1,10 @@
 import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart';
-import 'package:khinsider_api/src/extensions/html_extensions.dart';
-import 'package:khinsider_api/src/models/album.dart';
-import 'package:khinsider_api/src/utils/const.dart';
-import 'package:khinsider_api/src/utils/url_utils.dart';
+import 'package:khinsider_sdk/src/extensions/html_extensions.dart';
+import 'package:khinsider_sdk/src/models/album.dart';
+import 'package:khinsider_sdk/src/utils/const.dart';
+import 'package:khinsider_sdk/src/utils/url_utils.dart';
 import 'package:quiver/strings.dart';
 
 /// A client object that makes HTTP requests to Khinsider.

@@ -1,5 +1,5 @@
 import 'package:http/http.dart';
-import 'package:khinsider_api/src/core/khinsider.dart';
+import 'package:khinsider_sdk/src/core/khinsider.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:quiver/collection.dart';
