@@ -1,6 +1,6 @@
 # Khinsider SDK
 [![Library Tests](https://github.com/SebastianLiando/khinsider_sdk/actions/workflows/dart.yml/badge.svg)](https://github.com/SebastianLiando/khinsider_sdk/actions/workflows/dart.yml)
-![Pub package](https://img.shields.io/pub/v/khinsider_sdk)
+[![Pub package](https://img.shields.io/pub/v/khinsider_sdk)](https://pub.dev/packages/khinsider_sdk)
 
 An SDK to get video game music files from [Khinsider](https://downloads.khinsider.com).
 
