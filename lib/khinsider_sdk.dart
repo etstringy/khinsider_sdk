@@ -1,4 +1,4 @@
-library khinsider_api;
+library khinsider_sdk;
 
 // Client
 export 'package:khinsider_sdk/src/core/khinsider.dart';
