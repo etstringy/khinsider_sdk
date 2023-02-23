@@ -8,8 +8,8 @@ void main() async {
   print('/* Search */');
   final albumsList = await khinsider.searchAlbums('Hello');
 
-  albumsList.forEach((key, value) {
-    print('$key: $value');
+  albumsList.forEach((result) {
+    print(result.toString());
   });
 
   // Query a specific album to get its soundtracks and related albums

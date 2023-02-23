@@ -5,6 +5,7 @@ import 'package:khinsider_sdk/src/extensions/html_extensions.dart';
 import 'package:khinsider_sdk/src/models/album.dart';
 import 'package:khinsider_sdk/src/utils/const.dart';
 import 'package:khinsider_sdk/src/utils/url_utils.dart';
+import 'package:khinsider_sdk/src/models/album_search_result.dart';
 import 'package:quiver/strings.dart';
 
 /// A client object that makes HTTP requests to Khinsider.
@@ -23,7 +24,7 @@ class Khinsider {
   ///
   /// Note that Khinsider has the condition that the [query] string length must be of length 3 or above.
   /// If the [query] length is less than 3, an [ArgumentError] will be thrown.
-  Future<Map<String, String>> searchAlbums(String query) async {
+  Future<List<AlbumSearchResult>> searchAlbums(String query) async {
     // Khinsider has the condition that the query length must be of length 3.
     _ensureCondition(
       () => query.length >= 3,
@@ -39,21 +40,45 @@ class Khinsider {
     );
 
     // Build the result, and return
-    final result = <String, String>{};
+    final results = <AlbumSearchResult>[];
 
     albumAnchors.forEach((anchor) {
-      final href = anchor.attributes['href'];
-      if (href == null) return;
+      var parentEl = anchor.parent!.parent!;
 
-      final key = getUrlLeafPath(href);
-      if (key == null) return;
+      final url = anchor.attributes['href'];
+      if (url == null) return;
 
-      final value = anchor.innerHtml;
+      // album id
+      final id = getUrlLeafPath(url);
+      if (id == null) return;
 
-      result[key] = value;
+      // album name
+      final name = anchor.innerHtml;
+
+      // album art
+      var icon = null;
+      var _icon_src = parentEl.children[0].children[0].children[0].attributes['src'];
+      if(_icon_src != null) {
+        icon = _icon_src;
+      }
+      
+      var platform = parentEl.children[2].children[0].innerHtml;
+      var type = parentEl.children[3].innerHtml;
+      var year = parentEl.children[4].innerHtml;
+
+      var result = AlbumSearchResult(
+        id: id,
+        name: name,
+        iconUrl: icon,
+        platform: platform,
+        type: type,
+        year: year
+      );
+      
+      results.add(result);
     });
 
-    return result;
+    return results;
   }
 
   /// Retrieves an album details for the given [albumId] from Khinsider website.

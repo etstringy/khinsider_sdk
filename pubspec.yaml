@@ -1,6 +1,6 @@
 name: khinsider_sdk
 description: SDK for video game musics from downloads.khinsider.com
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/SebastianLiando/khinsider_sdk
 
 environment:
