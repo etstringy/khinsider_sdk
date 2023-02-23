@@ -47,8 +47,9 @@ class Soundtrack {
 
     // Remove the irrelevant <td> elements
     // The first two <td> contain the play icon and the sound number
-    // The last <td> contains a download icon
-    final rows = tableData.getRange(2, tableData.length - 2).toList();
+    // The last <td> contains a download icon and a playlist icon
+    final rows =
+        tableData.getRange(tableData.length - 6, tableData.length - 2).toList();
 
     // The first relevant <td> is the sound name
     final name = _getInnerHtmlOfSingleWrappingAnchor(rows.first);
@@ -62,7 +63,6 @@ class Soundtrack {
     // The remaining rows contains the file size
     for (int i = 2, j = 0; i < rows.length; i++, j++) {
       final size = _getInnerHtmlOfSingleWrappingAnchor(rows[i]);
-      print(formats[j]);
       formatAndSizes[formats[j]] = size;
     }
 

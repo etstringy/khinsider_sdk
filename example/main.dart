@@ -14,7 +14,7 @@ void main() async {
 
   // Query a specific album to get its soundtracks and related albums
   print('/* Album */');
-  final album = await khinsider.getAlbum('angel');
+  final album = await khinsider.getAlbum('splatoon-2-original-soundtrack');
 
   final songs = album.soundtracks;
 
