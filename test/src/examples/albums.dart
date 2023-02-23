@@ -549,6 +549,9 @@ final MP3_AND_M4A_ALBUM = {
 </body>
 </html><!-- Loaded HTML -->
 ''': Album(
+    description: (
+      "this is a description"
+    ),
     summary: AlbumSummary(
       id: 'ryu-ga-gotoku-7-karaoke-hit-song-collection',
       name: 'Ryu ga gotoku 7 Karaoke hit song collection',
@@ -560,7 +563,6 @@ final MP3_AND_M4A_ALBUM = {
           'https://vgmsite.com/soundtracks/ryu-ga-gotoku-7-karaoke-hit-song-collection/thumbs/Cover.jpg')
     ],
     fileFormats: ['mp3', 'm4a'],
-    dateAdded: DateTime(2021, DateTime.may, 26),
     soundtracks: [
       Soundtrack(
         id: '01.%2520Akuma%2520no%2520Jigokunabe%2520%2528Full%2520Spec%2520Edition%2529.mp3',
@@ -1155,7 +1157,7 @@ final MP3_ONLY_ALBUM = {
           'https://vgmsite.com/soundtracks/hellsinker-arrange-remix/thumbs/Disc.jpg'),
     ],
     fileFormats: ['mp3'],
-    dateAdded: DateTime(2014, DateTime.november, 5),
+    description: "this is a description 2",
     soundtracks: [
       Soundtrack(
         id: '01%2520BackGround%2520-%2520Title%2520ver%252C2%2520-.mp3',

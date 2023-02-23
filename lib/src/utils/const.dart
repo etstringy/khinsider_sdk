@@ -13,7 +13,7 @@ const BASE_SOUND_FILE_URL = 'https://vgmsite.com/soundtracks/';
 
 const ALBUMS_ANCHOR_HREF_START = '/game-soundtracks/album';
 
-const DATE_ADDED = 'Date added:';
+const DATE_ADDED = 'Date Added:';
 
 /// The ID for the <th> tag of the song lists.
 const SONGLIST_HEADER_ID = 'songlist_header';

@@ -2,7 +2,6 @@ import 'package:html/dom.dart';
 import 'package:khinsider_sdk/src/models/album_summary.dart';
 import 'package:khinsider_sdk/src/models/soundtrack.dart';
 import 'package:khinsider_sdk/src/utils/const.dart';
-import 'package:khinsider_sdk/src/utils/date_utils.dart';
 import 'package:khinsider_sdk/src/utils/url_utils.dart';
 import 'package:quiver/collection.dart';
 import 'package:quiver/core.dart';
@@ -18,8 +17,7 @@ class Album {
   /// All soundtrack file formats available for this album.
   final List<String> fileFormats;
 
-  /// When this album was added to Khinsider.
-  final DateTime dateAdded;
+  final String description;
 
   /// All the soundtracks available for this album.
   final List<Soundtrack> soundtracks;
@@ -31,9 +29,9 @@ class Album {
     required this.summary,
     required this.coversUri,
     required this.fileFormats,
-    required this.dateAdded,
     required this.soundtracks,
-    required this.relatedAlbums,
+    required this.relatedAlbums, 
+    required this.description,
   });
 
   /// The album id from [summary].
@@ -69,7 +67,7 @@ class Album {
 
     final fileFormats = tableHeaders
         // Take only the headers that specifies audio format
-        .getRange(SOUND_FORMAT_START_INDEX, tableHeaders.length - 1)
+        .getRange(SOUND_FORMAT_START_INDEX, tableHeaders.length - 2)
         // These headers contains a single <b> tag
         .map((header) => header.getElementsByTagName('b').first)
         // The file format is the content of the <b> tag
@@ -80,11 +78,6 @@ class Album {
         .getElementsByTagName('p')
         .where((element) => element.innerHtml.contains(DATE_ADDED))
         .first;
-
-    // The last <b> tag of the album details is the added date
-    final dateAddedString =
-        detailsParagraph.getElementsByTagName('b').last.innerHtml;
-    final dateAdded = parseKhinsiderAddedDate(dateAddedString);
 
     // Soundtracks are in the table with the id `songlist`
     final tables = document.getElementsByTagName('table');
@@ -118,9 +111,9 @@ class Album {
       ),
       coversUri: coversUri,
       fileFormats: fileFormats,
-      dateAdded: dateAdded,
       soundtracks: soundtracks,
       relatedAlbums: relatedAlbums,
+      description: detailsParagraph.innerHtml.replaceAll('<br/', '\n')
     );
   }
 
@@ -130,9 +123,9 @@ class Album {
       other is Album &&
           runtimeType == other.runtimeType &&
           summary == other.summary &&
+          description == other.description &&
           listsEqual(coversUri, other.coversUri) &&
           listsEqual(fileFormats, other.fileFormats) &&
-          dateAdded == other.dateAdded &&
           listsEqual(soundtracks, other.soundtracks) &&
           listsEqual(relatedAlbums, other.relatedAlbums);
 
@@ -141,13 +134,12 @@ class Album {
         summary,
         hashObjects(coversUri),
         hashObjects(fileFormats),
-        dateAdded,
         hashObjects(soundtracks),
         hashObjects(relatedAlbums),
       ]);
 
   @override
   String toString() {
-    return 'Album{summary: $summary, coversUri: $coversUri, fileFormats: $fileFormats, dateAdded: $dateAdded, soundtracks: $soundtracks, relatedAlbums: $relatedAlbums}';
+    return 'Album{summary: $summary, coversUri: $coversUri, fileFormats: $fileFormats, description: $description, soundtracks: $soundtracks, relatedAlbums: $relatedAlbums}';
   }
 }

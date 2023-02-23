@@ -57,24 +57,26 @@ class Khinsider {
 
       // album art
       var icon = null;
-      var _icon_src = parentEl.children[0].children[0].children[0].attributes['src'];
-      if(_icon_src != null) {
-        icon = _icon_src;
+      var _icon_src =
+          parentEl.children[0].children[0].children[0].attributes['src'];
+      if (_icon_src != null) {
+        icon = Uri.dataFromString(_icon_src);
       }
-      
-      var platform = parentEl.children[2].children[0].innerHtml;
+
+      var platform = (parentEl.children[2].children.length > 0)
+          ? parentEl.children[2].children[0].innerHtml
+          : null;
       var type = parentEl.children[3].innerHtml;
       var year = parentEl.children[4].innerHtml;
 
       var result = AlbumSearchResult(
-        id: id,
-        name: name,
-        iconUrl: icon,
-        platform: platform,
-        type: type,
-        year: year
-      );
-      
+          id: id,
+          name: name,
+          iconUrl: icon,
+          platform: platform,
+          type: type,
+          year: year);
+
       results.add(result);
     });
 
@@ -94,6 +96,7 @@ class Khinsider {
     try {
       return Album.fromHtmlDoc(uri, document);
     } catch (err) {
+      rethrow;
       throw ArgumentError('The album ID "$albumId" does not exist!');
     }
   }
