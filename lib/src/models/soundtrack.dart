@@ -19,13 +19,20 @@ class Soundtrack {
   /// The formats of the soundtrack as keys, and the corresponding file sizes as values.
   final Map<String, String> formatAndSizes;
 
+  // The CD number if applicable
+  final int? cd;
+
+  // The track number if applicable
+  final int? track;
+
   /// Creates a new soundtrack object.
-  Soundtrack({
-    required this.id,
-    required this.name,
-    required this.duration,
-    required this.formatAndSizes,
-  });
+  Soundtrack(
+      {required this.id,
+      required this.name,
+      required this.duration,
+      required this.formatAndSizes,
+      this.cd,
+      this.track});
 
   /// Parse the soundtrack details from a <[tr]> element. The [formats] contains
   /// a list of the available sound format. It should be in the correct order as the
@@ -41,6 +48,11 @@ class Soundtrack {
         // Get the link
         .attributes['href'];
 
+    final header = tr.parent!.children.first;
+    final hasCd = (header.children[1].children.first.innerHtml == "CD");
+    final hasTrackNum =
+        (header.children[1].children.first.innerHtml != "Song Name");
+
     final id = getUrlLeafPath(soundLink!)!;
 
     final tableData = tr.getElementsByTagName('td');
@@ -48,8 +60,21 @@ class Soundtrack {
     // Remove the irrelevant <td> elements
     // The first two <td> contain the play icon and the sound number
     // The last <td> contains a download icon and a playlist icon
-    final rows =
-        tableData.getRange(tableData.length - 6, tableData.length - 2).toList();
+
+    final rows = tableData
+        .getRange(
+            header.children.indexOf(header.children.firstWhere(
+                (element) => element.innerHtml.contains("Song Name"))),
+            tableData.length - 2)
+        .toList();
+
+    final track = (hasTrackNum)
+        ? (hasCd)
+            ? int.parse(tableData[2].innerHtml.replaceAll(".", ""))
+            : int.parse(tableData[1].innerHtml.replaceAll(".", ""))
+        : null;
+
+    final cd = (hasCd) ? int.parse(tableData[1].innerHtml) : null;
 
     // The first relevant <td> is the sound name
     final name = _getInnerHtmlOfSingleWrappingAnchor(rows.first);
@@ -61,17 +86,18 @@ class Soundtrack {
     final formatAndSizes = <String, String>{};
 
     // The remaining rows contains the file size
-    for (int i = 2, j = 0; i < rows.length; i++, j++) {
+    for (int i = rows.length - formats.length; i == rows.length; i--) {
       final size = _getInnerHtmlOfSingleWrappingAnchor(rows[i]);
-      formatAndSizes[formats[j]] = size;
+      formatAndSizes[formats[rows.length - i]] = size;
     }
 
     return Soundtrack(
-      id: id,
-      name: name,
-      duration: duration,
-      formatAndSizes: formatAndSizes,
-    );
+        id: id,
+        name: name,
+        duration: duration,
+        formatAndSizes: formatAndSizes,
+        cd: cd,
+        track: track);
   }
 
   @override

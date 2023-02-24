@@ -14,10 +14,10 @@ void main() async {
 
   // Query a specific album to get its soundtracks and related albums
   print('/* Album */');
-  final album = await khinsider.getAlbum('splatoon-2-original-soundtrack');
-
+  final album = await khinsider.getAlbum('jackbox-party-the-pack-8-soundtrack-2021');
   final songs = album.soundtracks;
 
+  print(songs);
   songs.forEach((element) {
     print(element.name + " : " + element.id);
   });
