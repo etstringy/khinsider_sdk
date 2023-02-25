@@ -6,7 +6,7 @@ void main() async {
 
   // Query for a list of albums
   print('/* Search */');
-  final albumsList = await khinsider.searchAlbums('Hello');
+  final albumsList = await khinsider.searchAlbums('mario');
 
   albumsList.forEach((result) {
     print(result.toString());

@@ -37,7 +37,8 @@ class Khinsider {
 
     final albumAnchors = document.getAnchorTagWhereLink(
       (link) => link != null && link.startsWith(ALBUMS_ANCHOR_HREF_START),
-    );
+    )
+    .where((element) => element.parent?.className != "albumIcon");
 
     // Build the result, and return
     final results = <AlbumSearchResult>[];
